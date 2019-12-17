@@ -42,14 +42,15 @@
             },
             translate3d(depth) {
                 let translate3d;
+
                 if (this.x === null) {
                     translate3d = "translate3d(0, 0, 0px)"
                 } else {
                     let width = window.innerWidth
                     let height = window.innerHeight
-                    let translateX = ( this.x * depth / width - depth / 2 ) + 'px'
-                    let translateY = ( this.y * depth / 2 / height - depth / 4 ) + 'px'
-                    translate3d = "translate3d(" + translateX + ", " + translateY + ", 0px)"
+                    let translateX = ( this.x * depth / width - depth / 2 )
+                    let translateY = ( this.y * depth / 2 / height - depth / 4 )
+                    translate3d = "translate3d(" + translateX + "px, " + translateY + "px, 0px)"
                 }
 
                 return translate3d
@@ -82,16 +83,15 @@
     }
     .layer6, .layer5, .layer4, .layer3, .layer2, .layer1 {
         position: absolute;
-        bottom: -100px;
     }
     .layer1 {
-
+        bottom: -100px;
     }
     .layer2 {
         bottom: -60px;
     }
     .layer3 {
-
+        bottom: -100px;
     }
     .layer4 {
         bottom: -120px;
@@ -105,16 +105,6 @@
     .layer7 {
         z-index: 0;
     }
-
-    @keyframes move-twink-back {
-        from {
-            background-position: 0 0;
-        }
-        to {
-            background-position: -10000px 5000px;
-        }
-    }
-
     .stars, .twinkling {
         position: absolute;
         top: 0;
@@ -133,5 +123,13 @@
         background: transparent url("./assets/twinkling.png") repeat top center;
         z-index: 1;
         animation: move-twink-back 200s linear infinite;
+    }
+    @keyframes move-twink-back {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: -10000px 5000px;
+        }
     }
 </style>
