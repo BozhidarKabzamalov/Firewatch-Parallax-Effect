@@ -2,11 +2,11 @@
     <div id="app">
         <div class="container" @mousemove='getCoordinates($event)'>
             <div class="layer7">
-                <div class="stars"></div>
-                <div class="twinkling"></div>
+                <div class="stars" v-bind:style="{ transform: translate3d(-30) }"></div>
+                <div class="twinkling" v-bind:style="{ transform: translate3d(-30) }"></div>
             </div>
             <div class="layer6" v-bind:style="{ transform: translate3d(-40) }">
-                <img src="@/assets/layer6.png" alt="">
+                <img src="@/assets/layer6.png" alt="Mountain">
             </div>
             <div class="layer5" v-bind:style="{ transform: translate3d(-50) }">
                 <img src="@/assets/layer5.png" alt="">
@@ -18,10 +18,10 @@
                 <img src="@/assets/layer3.png" alt="">
             </div>
             <div class="layer2" v-bind:style="{ transform: translate3d(-110) }">
-                <img src="@/assets/layer2.png" alt="">
+                <img src="@/assets/layer2.png" alt="Tower">
             </div>
             <div class="layer1" v-bind:style="{ transform: translate3d(-130) }">
-                    <img src="@/assets/layer1.png" alt="">
+                    <img src="@/assets/layer1.png" alt="Trees">
             </div>
         </div>
     </div>
@@ -86,18 +86,18 @@
     }
     .layer1 {
 
-    },
+    }
     .layer2 {
-
+        bottom: -60px;
     }
     .layer3 {
 
     }
     .layer4 {
-        bottom: -100px;
+        bottom: -120px;
     }
     .layer5 {
-
+        bottom: -90px;
     }
     .layer6 {
         bottom: -20px;
