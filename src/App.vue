@@ -1,9 +1,18 @@
 <template>
     <div id="app">
         <div class="container" @mousemove='getCoordinates($event)'>
-            <div class="layer7">
+
+
+
+            <div class="layer8">
                 <div class="stars" v-bind:style="{ transform: translate3d(-30) }"></div>
                 <div class="twinkling" v-bind:style="{ transform: translate3d(-30) }"></div>
+            </div>
+            <div class="layer7" v-bind:style="{ transform: translate3d(-30) }">
+                <div class="moon-container" >
+                    <img class='moon' src="@/assets/moon.svg" alt="Moon">
+                    <img class='second-moon' src="@/assets/moon.svg" alt="Moon">
+                </div>
             </div>
             <div class="layer6" v-bind:style="{ transform: translate3d(-40) }">
                 <img src="@/assets/layer6.png" alt="Mountain">
@@ -21,7 +30,7 @@
                 <img src="@/assets/layer2.png" alt="Tower">
             </div>
             <div class="layer1" v-bind:style="{ transform: translate3d(-130) }">
-                    <img src="@/assets/layer1.png" alt="Trees">
+                <img src="@/assets/layer1.png" alt="Trees">
             </div>
         </div>
     </div>
@@ -102,8 +111,36 @@
     .layer6 {
         bottom: -20px;
     }
+    .layer8 {
+        z-index: -1;
+    }
     .layer7 {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .moon-container {
+        position: absolute;
+        bottom: -50%;
+        height: 100%;
+        width: 70%;
+        animation: rotation 480s infinite linear;
         z-index: 0;
+    }
+    .moon, .second-moon {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+    }
+    .moon {
+        left: 0;
+    }
+    .second-moon {
+        right: 0;
+        bottom: 0;
     }
     .stars, .twinkling {
         position: absolute;
@@ -130,6 +167,14 @@
         }
         to {
             background-position: -10000px 5000px;
+        }
+    }
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
         }
     }
 </style>
