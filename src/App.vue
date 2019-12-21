@@ -1,12 +1,9 @@
 <template>
     <div id="app">
         <div class="container" @mousemove='getCoordinates($event)'>
-
-
-
-            <div class="layer8">
-                <div class="stars" v-bind:style="{ transform: translate3d(-30) }"></div>
-                <div class="twinkling" v-bind:style="{ transform: translate3d(-30) }"></div>
+            <div class="layer8" v-bind:style="{ width: this.width + 'px', height: this.width + 'px', marginBottom: -this.width/2 + 'px', transform: translate3d(-20) }">
+                <div class="stars"></div>
+                <div class="twinkling"></div>
             </div>
             <div class="layer7" v-bind:style="{ transform: translate3d(-30) }">
                 <div class="moon-container" >
@@ -18,13 +15,13 @@
                 <img src="@/assets/layer6.png" alt="Mountain">
             </div>
             <div class="layer5" v-bind:style="{ transform: translate3d(-50) }">
-                <img src="@/assets/layer5.png" alt="">
+                <img src="@/assets/layer5.png" alt="Rocks">
             </div>
             <div class="layer4" v-bind:style="{ transform: translate3d(-70) }">
-                <img src="@/assets/layer4.png" alt="">
+                <img src="@/assets/layer4.png" alt="Trees">
             </div>
             <div class="layer3" v-bind:style="{ transform: translate3d(-90) }">
-                <img src="@/assets/layer3.png" alt="">
+                <img src="@/assets/layer3.png" alt="Trees">
             </div>
             <div class="layer2" v-bind:style="{ transform: translate3d(-110) }">
                 <img src="@/assets/layer2.png" alt="Tower">
@@ -63,6 +60,11 @@
                 }
 
                 return translate3d
+            }
+        },
+        computed: {
+            width(){
+                return window.innerWidth * 1.3
             }
         }
     }
@@ -111,9 +113,6 @@
     .layer6 {
         bottom: -20px;
     }
-    .layer8 {
-        z-index: -1;
-    }
     .layer7 {
         position: relative;
         height: 100vh;
@@ -122,13 +121,32 @@
         justify-content: center;
         overflow: hidden;
     }
+    .layer8 {
+        position: absolute;
+        bottom: 0;
+    }
+    .stars, .twinkling {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+    }
+    .stars {
+        background: #000 url("./assets/stars.png") repeat top center;
+        animation: rotation 1000s infinite linear;
+    }
+    .twinkling{
+        background: transparent url("./assets/twinkling.png") repeat top center;
+        animation: move-twink-back 200s linear infinite, rotation 1000s infinite linear;
+    }
     .moon-container {
         position: absolute;
         bottom: -50%;
         height: 100%;
         width: 70%;
         animation: rotation 480s infinite linear;
-        z-index: 0;
     }
     .moon, .second-moon {
         width: 50px;
@@ -141,25 +159,6 @@
     .second-moon {
         right: 0;
         bottom: 0;
-    }
-    .stars, .twinkling {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-    .stars {
-        background: #000 url("./assets/stars.png") repeat top center;
-        z-index: 0;
-    }
-    .twinkling{
-        background: transparent url("./assets/twinkling.png") repeat top center;
-        z-index: 1;
-        animation: move-twink-back 200s linear infinite;
     }
     @keyframes move-twink-back {
         from {
